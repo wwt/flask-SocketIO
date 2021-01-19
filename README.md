@@ -11,12 +11,14 @@
 
 - Launch terminal
 
-- Navigate to `./api` under your project repository
+- Navigate to ./api under your project repository
 
 - Stay up to date with modules by installing all dependencies from requirements.txt
 
   - `pip3 install -r requirements.txt`
 
+- Run the following command to create database. This will end up creating 'database.db' file under `./api` folder.
+  - `python3 createDatabase.py`
 - Run the following command to bring up the API
   - `python3 app.py`
 
