@@ -1,0 +1,20 @@
+.User {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid rgb(211, 209, 209);
+  box-shadow: 0 2px 2px #ccc;
+  width: 250px;
+  padding: 5px;
+}
+.TextBox {
+  float: right;
+}
+.AddUser {
+  display: inline-block;
+  margin-left: 570px;
+  margin-bottom: 20px;
+  border: 1px solid #080303;
+  box-shadow: 0 2px 2px #080303;
+  width: 300px;
+  padding: 5px;
+}

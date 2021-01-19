@@ -1,2 +1,6 @@
 # API
 API/__pycache__
+
+# Client
+client/node_modules
+client/.eslintcache
