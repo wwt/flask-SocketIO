@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request, Response
+from flask_socketio import *
+from flask_cors import CORS
 
 from UserModel import *
 from settings import *
 
 import json
-
 
 def validUserObject(userObject):
     if ("firstName" in userObject and
@@ -16,6 +17,10 @@ def validUserObject(userObject):
     else:
         return False
 
+# SocketIO 
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+# app Routes
 
 @app.route('/users')
 def get_users():
@@ -51,5 +56,19 @@ def delete_user(id):
 
     return Response("", status=404, mimetype='application/json')
 
+# SocketIO Events
+@socketio.on('connect')
+def connected():
+    print('Connected')
 
-app.run(port=5000)
+@socketio.on('disconnect')
+def disconnected():
+    print('Disconnected')
+
+@socketio.on('UserAdded')
+def userAdded(message):
+    print('User Added')
+    emit('userAddedResponse', {'data': message}, broadcast=True)
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)

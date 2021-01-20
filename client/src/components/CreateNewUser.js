@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './UserDisplay.css'
+import { socket } from '../App'
 
 export default class CreateNewUser extends React.Component {
   state = {
@@ -33,7 +34,7 @@ export default class CreateNewUser extends React.Component {
     axios.post(`http://localhost:5000/users`, user)
       .then(res => {
         console.log(res);
-        console.log(res.data);
+        socket.emit('UserAdded', {'data' : {'user': user}})
       })
   }
 

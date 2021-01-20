@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import UserDisplay from './UserDisplay';
 import axios from 'axios';
+
+import { socket } from '../App'
 
 export default class UserList extends React.Component {
   state = {
@@ -8,9 +10,18 @@ export default class UserList extends React.Component {
   }
 
   componentDidMount() {
+    socket.on('userAddedResponse', (resp) => {
+      const users = this.state.users;
+      const userAdded = resp.data.data.user;
+      users.push(userAdded)
+      
+      this.setState({ users })
+    });
+
     axios.get(`http://localhost:5000/users`)
       .then(res => {
         const users = res.data.users;
+        console.log('Sahil Users: ', users)
         this.setState({ users });
       })
   }
