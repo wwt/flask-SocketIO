@@ -7,7 +7,9 @@
 - Download and Install Node.js from the following link
   - `https://nodejs.org/en/download/`
 
-# Python API
+# Launch the app
+
+## Python API
 
 - Launch terminal
 
