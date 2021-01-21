@@ -21,7 +21,6 @@ export default class UserList extends React.Component {
     axios.get(`http://localhost:5000/users`)
       .then(res => {
         const users = res.data.users;
-        console.log('Sahil Users: ', users)
         this.setState({ users });
       })
   }
